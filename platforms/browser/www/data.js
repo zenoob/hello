@@ -2,7 +2,7 @@
   // -----------------
 
   var ros = new ROSLIB.Ros({
-    url : 'ws://192.168.1.13:9090'
+    url : 'ws://192.168.1.200:9090'
   });
 
   ros.on('connection', function() {
