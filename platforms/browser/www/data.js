@@ -18,7 +18,7 @@
   });
 
 
-var buttonElt = document.getElementById("clearListButton");
+/*var buttonElt = document.getElementById("clearListButton");
 
 buttonElt.addEventListener("click", function () 
     {
@@ -40,7 +40,7 @@ buttonElt2.addEventListener("click", function ()
     theta: -1
   });
   cmdVel.publish(command);
-    });
+    });*/
 
   // Publishing a Topic
   // ------------------
@@ -57,3 +57,20 @@ buttonElt2.addEventListener("click", function ()
     theta: 0
   });
   cmdVel.publish(command);
+
+  var options = {
+          zone: document.getElementById('zone_joystick'),
+          mode: 'static',
+          position: {left: '50%', top: '50%'},
+          color: 'red'
+      };
+      var manager = nipplejs.create(options);
+      manager.on('move', function (evt, data) {
+        
+        var command = new ROSLIB.Message({
+          x: data.distance,
+          y: 0,
+          theta: 0
+        });
+        cmdVel.publish(command);
+    });
